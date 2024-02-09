@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -19,6 +19,7 @@ const ProfileSection = () => {
      * anchorRef is used on different components and specifying one type leads to other components throwing an error
      * */
     const anchorRef = useRef<any>(null);
+    const [userMode, setUserMode] = useState<boolean>(false);
 
     return (
         <>
@@ -55,11 +56,22 @@ const ProfileSection = () => {
                         color="inherit"
                     />
                 }
+
                 label={<IconSettings stroke={1.5} size="24px" color={theme.palette.primary.main} />}
                 variant="outlined"
                 ref={anchorRef}
                 color="primary"
                 aria-label="user-account"
+                onClick={() => {
+                    setUserMode(!userMode);
+                    if(userMode){
+                        alert('Intel');
+                    }
+                    else{
+                        alert('Ops');
+                    }
+                }
+            }
             />
         </>
     );
